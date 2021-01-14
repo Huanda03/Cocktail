@@ -6,5 +6,6 @@ target 'Cocktail' do
   use_frameworks!
 
   # Pods for Cocktail
+pod 'Firebase/Analytics'
 
 end
