@@ -26,7 +26,7 @@
                                 <rect key="frame" x="85" y="419" width="245" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAf-7V-LIS">
                                 <rect key="frame" x="141" y="504" width="133" height="35"/>
@@ -34,7 +34,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Iniciar Sesion"/>
                                 <connections>
-                                    <segue destination="3FV-Jf-8i5" kind="show" id="MHo-iw-lCG"/>
+                                    <action selector="inicioSesion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tJB-St-TvS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-ng-6VG">
@@ -43,6 +43,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Crear Cuenta"/>
                                 <connections>
+                                    <action selector="crearCuenta:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eHt-xy-5hT"/>
                                     <segue destination="CdX-Dd-MWZ" kind="show" id="2d5-Eq-rBy"/>
                                 </connections>
                             </button>
@@ -51,15 +52,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="rIy-ce-p7J"/>
+                    <connections>
+                        <outlet property="contraseñaTextField" destination="JEE-NX-aY3" id="5nK-qW-Ieo"/>
+                        <outlet property="usuarioTextField" destination="7Np-df-wVN" id="S7e-Pz-CVu"/>
+                        <segue destination="3FV-Jf-8i5" kind="show" identifier="inicioSegue" id="dXl-bI-Edx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="923.1884057971015" y="103.79464285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Registrar Usuarios View Controller-->
         <scene sceneID="Lig-ey-fSd">
             <objects>
-                <viewController id="CdX-Dd-MWZ" sceneMemberID="viewController">
+                <viewController id="CdX-Dd-MWZ" customClass="registrarUsuariosViewController" customModule="Cocktail" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k2U-Bl-tmw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,13 +80,13 @@
                                 <rect key="frame" x="82" y="280" width="251" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pw5-qv-NVI">
                                 <rect key="frame" x="82" y="374" width="251" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fw3-cy-1Go">
                                 <rect key="frame" x="171" y="509" width="77" height="35"/>
@@ -88,7 +94,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Registrar"/>
                                 <connections>
-                                    <segue destination="3FV-Jf-8i5" kind="show" id="EbE-Xk-3CZ"/>
+                                    <action selector="registrar:" destination="CdX-Dd-MWZ" eventType="touchUpInside" id="Tfl-Ty-nUK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,15 +102,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="TO3-Hl-tu5"/>
+                    <connections>
+                        <outlet property="contraseñaTextField" destination="pw5-qv-NVI" id="1jf-bO-bpD"/>
+                        <outlet property="correoTextField" destination="nyW-Rc-hah" id="S88-QU-9Lv"/>
+                        <outlet property="usuarioTextField" destination="Pfy-4q-lHO" id="wQT-M1-So2"/>
+                        <segue destination="3FV-Jf-8i5" kind="show" identifier="registroSegue" id="I83-Gm-3hx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyF-Ff-pdu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="923" y="810"/>
         </scene>
-        <!--View Controller-->
+        <!--Principal View Controller-->
         <scene sceneID="cK0-GZ-a3K">
             <objects>
-                <viewController id="3FV-Jf-8i5" sceneMemberID="viewController">
+                <viewController id="3FV-Jf-8i5" customClass="PrincipalViewController" customModule="Cocktail" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vpk-1I-k9w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +158,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MHo-iw-lCG"/>
+        <segue reference="I83-Gm-3hx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
