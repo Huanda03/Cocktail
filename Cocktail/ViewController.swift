@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var contraseñaTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        validarUsuario()
     }
 
     @IBAction func inicioSesion(_ sender: UIButton) {
@@ -52,6 +52,12 @@ class ViewController: UIViewController {
         let aceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
         alerta.addAction(aceptar)
         present(alerta, animated: true, completion: nil)
+    }
+
+    func validarUsuario() {
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "inicioSegue", sender: self)
+        }
     }
     
     @IBAction func crearCuenta(_ sender: UIButton) {
