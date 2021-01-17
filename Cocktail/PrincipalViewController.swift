@@ -7,13 +7,20 @@
 
 import UIKit
 
-class PrincipalViewController: UIViewController, UITextFieldDelegate {
+class PrincipalViewController: UIViewController, UITextFieldDelegate, CocktailManagerDelegate {
     
-    let cocktailManager = CocktailManager()
+    func actualizarCocktail(cocktail: CocktailModelo) {
+        print("Desde el ViewController")
+        print(cocktail.id)
+    }
+    
+    
+    var cocktailManager = CocktailManager()
     
     @IBOutlet weak var cocktailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        cocktailManager.delegado = self
         cocktailTextField.delegate = self
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
