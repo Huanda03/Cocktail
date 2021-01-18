@@ -17,7 +17,7 @@ struct drinks: Codable {
     let strGlass : String
     let strInstructions : String
     let strDrinkThumb : String
-    let strIngredient1 : String
+    let strIngredient1 : String?
     let strIngredient2 : String?
     let strIngredient3 : String?
     let strIngredient4 : String?
@@ -25,7 +25,7 @@ struct drinks: Codable {
     let strIngredient6 : String?
     let strIngredient7 : String?
     let strIngredient8 : String?
-    let strMeasure1 : String
+    let strMeasure1 : String?
     let strMeasure2 : String?
     let strMeasure3 : String?
     let strMeasure4 : String?

@@ -11,7 +11,7 @@ class PrincipalViewController: UIViewController, UITextFieldDelegate, CocktailMa
     
     func actualizarCocktail(cocktail: CocktailModelo) {
         print("Desde el ViewController")
-        print(cocktail.id)
+        print(cocktail.nombre)
     }
     
     

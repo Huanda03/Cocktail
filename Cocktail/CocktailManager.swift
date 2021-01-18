@@ -18,8 +18,14 @@ struct CocktailManager {
     let cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?"
     
     func fetchCocktail (cocktail : String){
-        let urlString = "\(cocktailURL)s=\(cocktail)"
-        realizarSolicitud(urlString: urlString)
+
+        if cocktail.count == 1{
+            let urlString = "\(cocktailURL)f=\(cocktail)"
+            realizarSolicitud(urlString: urlString)
+        }else{
+            let urlString = "\(cocktailURL)s=\(cocktail)"
+            realizarSolicitud(urlString: urlString)
+        }
     }
     
     func realizarSolicitud(urlString : String) {
@@ -35,22 +41,16 @@ struct CocktailManager {
                         delegado?.actualizarCocktail(cocktail: cocktail)
                     }
                 }
-                
             }
             tarea.resume()
         }
-
     }
     
     func parseJSON(cocktailData : Data) -> CocktailModelo?{
         
-        
         let decoder = JSONDecoder()
         do{
-            
-           
             let dataDecodificada = try decoder.decode(CocktailData.self, from: cocktailData)
-            
             var nombreBebida = [String]()
             var idBebida = [String]()
             
@@ -58,8 +58,6 @@ struct CocktailManager {
                 idBebida += [dataDecodificada.drinks[i].idDrink]
                 nombreBebida += [dataDecodificada.drinks[i].strDrink]
             }
-            
-            
             let objCocktail = CocktailModelo(id: idBebida, nombre: nombreBebida)
             return objCocktail
             
