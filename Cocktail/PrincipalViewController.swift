@@ -6,28 +6,58 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class PrincipalViewController: UIViewController, UITextFieldDelegate, CocktailManagerDelegate {
-    
-    func actualizarCocktail(cocktail: CocktailModelo) {
-        print("Desde el ViewController")
-        print(cocktail.nombre)
-    }
-    
-    
+class PrincipalViewController: UIViewController {
+
     var cocktailManager = CocktailManager()
     
+    var coctel = [CocktailModelo]()
+    
+
     @IBOutlet weak var cocktailTextField: UITextField!
+    @IBOutlet weak var tablaCoctel: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         cocktailManager.delegado = self
-        cocktailTextField.delegate = self
     }
+
+    
+    @IBAction func logOutButton(_ sender: UIBarButtonItem) {
+        do{
+            try FirebaseAuth.Auth.auth().signOut()
+            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToViewController(ofClass: ViewController.self)
+        }catch{
+            print(error)
+        }
+    }
+    @IBAction func buscarButton(_ sender: UIButton) {
+        cocktailManager.fetchCocktail(cocktail: cocktailTextField.text!)
+    }
+    
+}
+
+extension UINavigationController{
+    func popToViewController (ofClass: AnyClass, animated: Bool = true){
+        if let vc = viewControllers.last(where: { $0.isKind(of: ofClass)}){
+            popToViewController(vc, animated: true)
+        }
+    }
+}
+
+extension PrincipalViewController : CocktailManagerDelegate{
+    func actualizarCocktail(cocktail: CocktailModelo) {
+        print(cocktail.id)
+    }
+}
+
+
+extension PrincipalViewController : UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         cocktailTextField.text = ""
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        cocktailManager.fetchCocktail(cocktail: cocktailTextField.text!)
         return true
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -38,9 +68,4 @@ class PrincipalViewController: UIViewController, UITextFieldDelegate, CocktailMa
             return false
         }
     }
-    
-    @IBAction func buscarButton(_ sender: UIButton) {
-        cocktailManager.fetchCocktail(cocktail: cocktailTextField.text!)
-    }
-    
 }
