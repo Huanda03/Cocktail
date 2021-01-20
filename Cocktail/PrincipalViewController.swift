@@ -16,7 +16,6 @@ class PrincipalViewController: UIViewController {
     var nombre : String?
     var cocktailManager = CocktailManager()
     
-    var coctel = [CocktailModelo]()
     
 
     @IBOutlet weak var cocktailTextField: UITextField!
@@ -24,13 +23,13 @@ class PrincipalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cocktailManager.delegado = self
-        tablaCoctel.dataSource = self
-        tablaCoctel.delegate = self
+       // tablaCoctel.dataSource = self
+       // tablaCoctel.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-            tablaCoctel.reloadData()
-    }
+    //override func viewWillAppear(_ animated: Bool) {
+    //        tablaCoctel.reloadData()
+   // }
     
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Cerrar Sesion", message: "Estas seguro que deseas salir ?", preferredStyle: .alert)
@@ -91,19 +90,19 @@ extension PrincipalViewController : UITextFieldDelegate{
 
 extension PrincipalViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return IDs?.count ?? 0
+        return IDs?.count ?? 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tablaCoctel.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        celda.textLabel?.text = nombres![indexPath.row]
+        celda.textLabel?.text = "Coctel \(indexPath.row)"
         return celda
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ID = IDs![indexPath.row]
-        nombre = nombres![indexPath.row]
+        ID = "17836"
+        nombre = "Coctel chido"
         performSegue(withIdentifier: "coctelInfo", sender: self)
         
         
@@ -116,5 +115,4 @@ extension PrincipalViewController: UITableViewDelegate, UITableViewDataSource{
             Objcoctel.recibirId = ID
         }
     }
-    
 }
