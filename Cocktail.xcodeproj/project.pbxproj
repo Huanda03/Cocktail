@@ -83,7 +83,6 @@
 		0A5B601B25AFCAF100A8A63D /* Cocktail */ = {
 			isa = PBXGroup;
 			children = (
-				0AAA174825B8DD1A00ECDA4A /* Vistas */,
 				0A5B601C25AFCAF100A8A63D /* AppDelegate.swift */,
 				0A5B601E25AFCAF100A8A63D /* SceneDelegate.swift */,
 				0A5B602225AFCAF100A8A63D /* Main.storyboard */,
@@ -92,15 +91,8 @@
 				0A5B602D25AFCAF900A8A63D /* Info.plist */,
 				0A90277D25B0C127007B0C36 /* GoogleService-Info.plist */,
 				0A5B602525AFCAF100A8A63D /* Cocktail.xcdatamodeld */,
-				0A90278D25B0C7AA007B0C36 /* registrarUsuariosViewController.swift */,
-				0A90279025B0C7C6007B0C36 /* PrincipalViewController.swift */,
-				0A5B602025AFCAF100A8A63D /* ViewController.swift */,
-				0AD639FA25B79E4F00C69A97 /* coctelViewController.swift */,
-				0AF2B6A125B3785F003B9AC1 /* CocktailManager.swift */,
-				0AAA174B25B8DE4600ECDA4A /* CocktailManager2.swift */,
-				0AF2B6A425B3860D003B9AC1 /* CocktailData.swift */,
-				0AD7F00B25B48351009E6CE4 /* CocktailModelo.swift */,
-				0AAA174425B8D2A300ECDA4A /* CocktailModelo2.swift */,
+				0AAA174825B8DD1A00ECDA4A /* Vistas */,
+				0AAA175025B8F0A700ECDA4A /* Api */,
 			);
 			path = Cocktail;
 			sourceTree = "<group>";
@@ -108,8 +100,24 @@
 		0AAA174825B8DD1A00ECDA4A /* Vistas */ = {
 			isa = PBXGroup;
 			children = (
+				0A5B602025AFCAF100A8A63D /* ViewController.swift */,
+				0A90278D25B0C7AA007B0C36 /* registrarUsuariosViewController.swift */,
+				0A90279025B0C7C6007B0C36 /* PrincipalViewController.swift */,
+				0AD639FA25B79E4F00C69A97 /* coctelViewController.swift */,
 			);
 			path = Vistas;
+			sourceTree = "<group>";
+		};
+		0AAA175025B8F0A700ECDA4A /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				0AF2B6A125B3785F003B9AC1 /* CocktailManager.swift */,
+				0AAA174B25B8DE4600ECDA4A /* CocktailManager2.swift */,
+				0AD7F00B25B48351009E6CE4 /* CocktailModelo.swift */,
+				0AAA174425B8D2A300ECDA4A /* CocktailModelo2.swift */,
+				0AF2B6A425B3860D003B9AC1 /* CocktailData.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		29CDC819C0EFDAF8F2B0CE7B /* Frameworks */ = {

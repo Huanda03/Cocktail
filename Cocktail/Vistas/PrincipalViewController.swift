@@ -23,13 +23,11 @@ class PrincipalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cocktailManager.delegado = self
-       // tablaCoctel.dataSource = self
-       // tablaCoctel.delegate = self
+        cocktailTextField.delegate = self
+        tablaCoctel.dataSource = self
+        tablaCoctel.delegate = self
     }
     
-    //override func viewWillAppear(_ animated: Bool) {
-    //        tablaCoctel.reloadData()
-   // }
     
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Cerrar Sesion", message: "Estas seguro que deseas salir ?", preferredStyle: .alert)
@@ -50,6 +48,7 @@ class PrincipalViewController: UIViewController {
     }
     @IBAction func buscarButton(_ sender: UIButton) {
         cocktailManager.fetchCocktail(cocktail: cocktailTextField.text!)
+        tablaCoctel.reloadData()
     }
     
 }
@@ -76,6 +75,8 @@ extension PrincipalViewController : UITextFieldDelegate{
         cocktailTextField.text = ""
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        cocktailManager.fetchCocktail(cocktail: cocktailTextField.text!)
+        tablaCoctel.reloadData()
         return true
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -90,19 +91,19 @@ extension PrincipalViewController : UITextFieldDelegate{
 
 extension PrincipalViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return IDs?.count ?? 5
+        return IDs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celda = tablaCoctel.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        celda.textLabel?.text = "Coctel \(indexPath.row)"
+        celda.textLabel?.text = nombres?[indexPath.row] ?? "Nombre"
         return celda
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        ID = "17836"
-        nombre = "Coctel chido"
+        ID = IDs![indexPath.row]
+        nombre = nombres![indexPath.row]
         performSegue(withIdentifier: "coctelInfo", sender: self)
         
         
