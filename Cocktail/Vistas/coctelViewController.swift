@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class coctelViewController: UIViewController {
     var cocktailManager = CocktailManager2()
@@ -29,6 +30,12 @@ class coctelViewController: UIViewController {
     @IBOutlet weak var preparacionBebida: UITextView!
     @IBOutlet weak var ImagenBebida: UIImageView!
     @IBOutlet weak var Label: UILabel!
+    
+    func conexion() -> NSManagedObjectContext{
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        return delegate.persistentContainer.viewContext
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cocktailManager.delegado = self
@@ -36,7 +43,25 @@ class coctelViewController: UIViewController {
     }
     
     @IBAction func favButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Agregar Favorito", message: "¿Desea agregar este coctel a favoritos?", preferredStyle: .alert)
         
+        let aceptar = UIAlertAction(title: "Aceptar", style: .default) { (_) in
+            let contexto = self.conexion()
+            let entidadFav = NSEntityDescription.insertNewObject(forEntityName: "Favoritos", into: contexto) as! Favoritos
+            entidadFav.id = self.recibirId
+            entidadFav.nombre = self.recibirNombre
+            
+            do{
+                try contexto.save()
+            }catch let error as NSError{
+                print(error.localizedDescription)
+            }
+        }
+        
+        let cancelar = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
+        alert.addAction(aceptar)
+        alert.addAction(cancelar)
+        present(alert, animated: true, completion: nil)
     }
     
 }
