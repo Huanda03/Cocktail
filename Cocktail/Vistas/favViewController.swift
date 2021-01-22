@@ -10,6 +10,8 @@ import CoreData
 
 class favViewController : UIViewController{
     
+    var nombre : String?
+    var id : String?
     
     func conexion() -> NSManagedObjectContext{
         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -69,6 +71,17 @@ extension favViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        id = favoritos[indexPath.row].id
+        nombre = favoritos[indexPath.row].nombre
+        performSegue(withIdentifier: "favCoctel", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "favCoctel"{
+            let Objcoctel = segue.destination as! favCoctelViewController
+            Objcoctel.nombre = nombre
+            Objcoctel.id = id
+        }
     }
     
 }

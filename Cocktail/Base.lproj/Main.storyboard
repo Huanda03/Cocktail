@@ -378,7 +378,7 @@
             </objects>
             <point key="canvasLocation" x="4665" y="319"/>
         </scene>
-        <!--Favoritos-->
+        <!--Fav View Controller-->
         <scene sceneID="BXx-g4-21Q">
             <objects>
                 <viewController id="637-tq-RM0" customClass="favViewController" customModule="Cocktail" customModuleProvider="target" sceneMemberID="viewController">
@@ -406,7 +406,7 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cocteles Favoritos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTu-LD-XBM">
-                                <rect key="frame" x="43" y="64" width="328" height="76"/>
+                                <rect key="frame" x="43" y="88" width="328" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <nil key="textColor"/>
@@ -416,14 +416,51 @@
                         <viewLayoutGuide key="safeArea" id="CYc-La-obo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoritos" image="star" catalog="system" id="ix1-mg-2It"/>
+                    <navigationItem key="navigationItem" id="bu7-z4-4KQ"/>
                     <connections>
                         <outlet property="tablaFav" destination="XgQ-gW-ADQ" id="ZzY-bC-3ji"/>
+                        <segue destination="xhk-5A-0l2" kind="show" identifier="favCoctel" id="XzJ-Yt-xnC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7o-xK-Y1p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2115.9420289855075" y="998.4375"/>
+            <point key="canvasLocation" x="2116" y="1729"/>
+        </scene>
+        <!--Fav Coctel View Controller-->
+        <scene sceneID="2vh-6Y-6R9">
+            <objects>
+                <viewController id="xhk-5A-0l2" customClass="favCoctelViewController" customModule="Cocktail" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2wd-a0-f8q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Le9-Sj-HPO">
+                                <rect key="frame" x="20" y="327" width="374" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQl-qu-4Ub">
+                                <rect key="frame" x="126" y="198" width="163" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rus-JI-aYm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9gX-w3-xmy"/>
+                    <connections>
+                        <outlet property="idlabel" destination="oQl-qu-4Ub" id="eIF-EZ-ItI"/>
+                        <outlet property="namelabel" destination="Le9-Sj-HPO" id="ScJ-mT-xD6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJe-VR-UIj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2928.985507246377" y="1727.6785714285713"/>
         </scene>
         <!--Item-->
         <scene sceneID="4xr-en-dnz">
@@ -448,7 +485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ucr-0c-Tc2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2932" y="998"/>
+            <point key="canvasLocation" x="2930" y="998"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hPF-cA-mri">
@@ -482,7 +519,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Q5K-Mt-Pyd" kind="relationship" relationship="viewControllers" id="RRO-B5-eHf"/>
-                        <segue destination="637-tq-RM0" kind="relationship" relationship="viewControllers" id="zB7-2z-AJX"/>
+                        <segue destination="wrL-VQ-5wm" kind="relationship" relationship="viewControllers" id="zB7-2z-AJX"/>
                         <segue destination="uvk-gB-5JN" kind="relationship" relationship="viewControllers" id="num-yI-mys"/>
                     </connections>
                 </tabBarController>
@@ -510,6 +547,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXJ-RB-9fh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2930.434782608696" y="318.75"/>
+        </scene>
+        <!--Favoritos-->
+        <scene sceneID="Woi-nC-eu4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wrL-VQ-5wm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favoritos" image="star" catalog="system" id="ix1-mg-2It"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KfQ-SZ-2Ht">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="637-tq-RM0" kind="relationship" relationship="rootViewController" id="dc5-zh-363"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rB1-Vn-GJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115.9420289855075" y="998.4375"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
