@@ -14,6 +14,7 @@ class coctelViewController: UIViewController {
     var recibirId: String?
     var idperron : String = ""
     var nombre : String?
+    var entrar : Bool = true
     
     @IBOutlet weak var ing1: UILabel!
     @IBOutlet weak var ing2: UILabel!
@@ -35,33 +36,75 @@ class coctelViewController: UIViewController {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         return delegate.persistentContainer.viewContext
     }
+    var favoritos = [Favoritos]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cargarCoreData()
         cocktailManager.delegado = self
         cocktailManager.fetchCocktail(cocktail: recibirId!)
     }
     
     @IBAction func favButton(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Agregar Favorito", message: "¿Desea agregar este coctel a favoritos?", preferredStyle: .alert)
-        
-        let aceptar = UIAlertAction(title: "Aceptar", style: .default) { (_) in
-            let contexto = self.conexion()
-            let entidadFav = NSEntityDescription.insertNewObject(forEntityName: "Favoritos", into: contexto) as! Favoritos
-            entidadFav.id = self.recibirId
-            entidadFav.nombre = self.recibirNombre
-            
-            do{
-                try contexto.save()
-            }catch let error as NSError{
-                print(error.localizedDescription)
+        var num : Int = 0
+        for i in 0...favoritos.count-1{
+            if favoritos[i].id == recibirId{
+                entrar = false
+                num=i
             }
         }
+        if entrar {
+            let alert = UIAlertController(title: "Agregar Favorito", message: "¿Desea agregar este coctel a favoritos?", preferredStyle: .alert)
+            
+            let aceptar = UIAlertAction(title: "Aceptar", style: .default) { (_) in
+                let contexto = self.conexion()
+                let entidadFav = NSEntityDescription.insertNewObject(forEntityName: "Favoritos", into: contexto) as! Favoritos
+                entidadFav.id = self.recibirId
+                entidadFav.nombre = self.recibirNombre
+                
+                do{
+                    try contexto.save()
+                }catch let error as NSError{
+                    print(error.localizedDescription)
+                }
+                self.cargarCoreData()
+            }
+            
+            let cancelar = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
+            alert.addAction(aceptar)
+            alert.addAction(cancelar)
+            present(alert, animated: true, completion: nil)
+            
+        } else{
+            let alerta = UIAlertController(title: "Coctel favorito", message: "Desea eliminar este coctel de su lista de favoritos?", preferredStyle: .alert)
+            let eliminar = UIAlertAction(title: "Eliminar", style: .destructive) { (_) in
+                let contexto = self.conexion()
+                contexto.delete(self.favoritos[num])
+                self.favoritos.remove(at: num)
+                do{
+                    try contexto.save()
+                }catch _ {
+                    
+                }
+                self.cargarCoreData()
+            }
+            let cancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+            alerta.addAction(eliminar)
+            alerta.addAction(cancelar)
+            present(alerta, animated: true, completion: nil)
+        }
+
+    }
+    
+    func cargarCoreData(){
+        let contexto = conexion()
+        let fetchRequest : NSFetchRequest <Favoritos> = Favoritos.fetchRequest()
         
-        let cancelar = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
-        alert.addAction(aceptar)
-        alert.addAction(cancelar)
-        present(alert, animated: true, completion: nil)
+        do{
+            favoritos = try contexto.fetch(fetchRequest)
+        } catch let error as NSError{
+            print(error.localizedDescription)
+        }
     }
     
 }
