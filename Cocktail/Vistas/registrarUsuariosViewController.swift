@@ -37,7 +37,9 @@ class registrarUsuariosViewController: UIViewController {
                 self.performSegue(withIdentifier: "registroSegue", sender: self)
             }
         }
+        
     }
+    
     func alerta (texto : String){
         let mensaje :String
         switch texto {

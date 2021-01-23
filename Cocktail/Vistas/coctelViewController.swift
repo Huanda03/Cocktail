@@ -16,6 +16,7 @@ class coctelViewController: UIViewController {
     var nombre : String?
     var entrar : Bool = true
     
+    @IBOutlet weak var starButton: UIBarButtonItem!
     @IBOutlet weak var ing1: UILabel!
     @IBOutlet weak var ing2: UILabel!
     @IBOutlet weak var ing3: UILabel!
@@ -43,7 +44,11 @@ class coctelViewController: UIViewController {
         cargarCoreData()
         cocktailManager.delegado = self
         cocktailManager.fetchCocktail(cocktail: recibirId!)
-    }
+        for i in 0...favoritos.count-1{
+            if favoritos[i].id == recibirId{
+                starButton.image = UIImage(systemName: "star.fill")
+            }
+        }    }
     
     @IBAction func favButton(_ sender: UIBarButtonItem) {
         var num : Int = 0
@@ -68,6 +73,7 @@ class coctelViewController: UIViewController {
                     print(error.localizedDescription)
                 }
                 self.cargarCoreData()
+                self.starButton.image = UIImage(systemName: "star.fill")
             }
             
             let cancelar = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
@@ -87,6 +93,7 @@ class coctelViewController: UIViewController {
                     
                 }
                 self.cargarCoreData()
+                self.starButton.image = UIImage(systemName: "star")
             }
             let cancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
             alerta.addAction(eliminar)

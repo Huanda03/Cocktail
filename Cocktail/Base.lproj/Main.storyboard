@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inicio1" translatesAutoresizingMaskIntoConstraints="NO" id="xJm-jM-145">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Np-df-wVN">
                                 <rect key="frame" x="85" y="341" width="245" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -29,20 +32,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAf-7V-LIS">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAf-7V-LIS">
                                 <rect key="frame" x="141" y="504" width="133" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="cTK-V8-3wC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Iniciar Sesion"/>
+                                <state key="normal" title="Iniciar Sesion">
+                                    <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
+                                </state>
                                 <connections>
                                     <action selector="inicioSesion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tJB-St-TvS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-ng-6VG">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwc-ng-6VG">
                                 <rect key="frame" x="141" y="574" width="133" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="G1T-6D-1D8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Crear Cuenta"/>
+                                <state key="normal" title="Crear Cuenta">
+                                    <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                </state>
                                 <connections>
                                     <action selector="crearCuenta:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eHt-xy-5hT"/>
                                     <segue destination="CdX-Dd-MWZ" kind="show" id="2d5-Eq-rBy"/>
@@ -51,6 +62,17 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lAf-7V-LIS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="141" id="6Ym-7O-5HL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fwc-ng-6VG" secondAttribute="bottom" constant="253" id="8zC-JS-nP2"/>
+                            <constraint firstItem="lAf-7V-LIS" firstAttribute="leading" secondItem="fwc-ng-6VG" secondAttribute="leading" id="KQb-nZ-oAj"/>
+                            <constraint firstItem="fwc-ng-6VG" firstAttribute="top" secondItem="lAf-7V-LIS" secondAttribute="bottom" constant="35" id="RtY-mm-q8d"/>
+                            <constraint firstItem="xJm-jM-145" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wgf-wp-45G"/>
+                            <constraint firstItem="xJm-jM-145" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="faz-zl-iPq"/>
+                            <constraint firstItem="lAf-7V-LIS" firstAttribute="trailing" secondItem="fwc-ng-6VG" secondAttribute="trailing" id="iKi-yY-ukO"/>
+                            <constraint firstItem="xJm-jM-145" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="whP-Gz-Tt1"/>
+                            <constraint firstItem="xJm-jM-145" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="wl8-BT-ioZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rIy-ce-p7J"/>
                     <connections>
@@ -89,14 +111,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fw3-cy-1Go">
-                                <rect key="frame" x="171" y="509" width="77" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKj-T2-fae">
+                                <rect key="frame" x="138" y="474" width="136" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Registrar"/>
                                 <connections>
-                                    <action selector="registrar:" destination="CdX-Dd-MWZ" eventType="touchUpInside" id="Tfl-Ty-nUK"/>
-                                    <segue destination="ezD-98-0O4" kind="presentation" identifier="registroSegue" modalPresentationStyle="fullScreen" id="5uX-IN-naG"/>
+                                    <action selector="registrar:" destination="CdX-Dd-MWZ" eventType="touchUpInside" id="lyl-VZ-wea"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,11 +129,12 @@
                         <outlet property="contraseñaTextField" destination="pw5-qv-NVI" id="1jf-bO-bpD"/>
                         <outlet property="correoTextField" destination="nyW-Rc-hah" id="S88-QU-9Lv"/>
                         <outlet property="usuarioTextField" destination="Pfy-4q-lHO" id="wQT-M1-So2"/>
+                        <segue destination="ezD-98-0O4" kind="presentation" identifier="registroSegue" modalPresentationStyle="fullScreen" id="l5i-b8-GyL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyF-Ff-pdu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="836"/>
+            <point key="canvasLocation" x="921.73913043478262" y="835.71428571428567"/>
         </scene>
         <!--Principal View Controller-->
         <scene sceneID="cK0-GZ-a3K">
@@ -351,7 +373,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M4p-y4-ohO">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="star.fill" catalog="system" id="tmT-1m-HjW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="tmT-1m-HjW">
                             <connections>
                                 <action selector="favButton:" destination="S4b-aG-SfZ" id="O3o-EW-nnh"/>
                             </connections>
@@ -373,6 +395,7 @@
                         <outlet property="ing5" destination="YLN-E9-lf9" id="GnC-Q3-oGY"/>
                         <outlet property="ing6" destination="nsh-ce-3SS" id="qkC-LT-5lB"/>
                         <outlet property="preparacionBebida" destination="D2m-jt-vph" id="lrP-KC-KoU"/>
+                        <outlet property="starButton" destination="tmT-1m-HjW" id="2Jy-aw-8iL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PT-rh-zAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -443,7 +466,7 @@
                                 <rect key="frame" x="78" y="617" width="258" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="hola" translatesAutoresizingMaskIntoConstraints="NO" id="W7z-7a-7AU">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W7z-7a-7AU">
                                 <rect key="frame" x="57" y="501" width="300" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.33561643835616439" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -733,10 +756,10 @@
     <resources>
         <image name="Ubicacion-removebg-preview" width="331" height="188.5"/>
         <image name="fondo2" width="375" height="667"/>
+        <image name="inicio1" width="313" height="208.5"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="star" catalog="system" width="128" height="116"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
