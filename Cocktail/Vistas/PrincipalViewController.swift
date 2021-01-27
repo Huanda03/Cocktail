@@ -72,13 +72,17 @@ extension PrincipalViewController : CocktailManagerDelegate{
 
 extension PrincipalViewController : UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
-        cocktailTextField.text = ""
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         cocktailManager.fetchCocktail(cocktail: cocktailTextField.text!)
         tablaCoctel.reloadData()
         return true
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if cocktailTextField.text != ""{
             return true
